@@ -1,90 +1,88 @@
 #include <stdio.h>
-#include<string.h>
-//definition
+#include <string.h>
+//function definition
 //login function
-int login(char username[50],char pin[5]){
-    char correctusername[50]= "Ruette";
-    char correctpin[]="0104";
-    if(strcmp(correctusername, username)==0 && strcmp(correctpin, pin)==0){
-        return 1; //success
+int login(char username[50], char pin[5]){
+char correctusername[50]= "Ruerue";
+char correctpin[5]="7891";
+int attempts;
+while(attempts<3, attempts++){
+    printf("Enter username");
+    scanf("%49s", username);
+    printf("Enter pin");
+    scanf("%4s", pin);
+    if(strcmp(correctusername,username)==0 && strcmp(correctpin,pin)==0){
+        printf("login succesful");
+        return 1;}
+        else{
+            printf("Incorrect username or pin\n");
+            return 0;
         }
-        return 0;//fail
-        }
-        //display menu function
-    void displaymenu(){
-    printf("\nENTER YOUR CHOICE OF SERVICE\n");
-    printf("1. Check Balance\n");
-    printf("2. Deposit\n");
-    printf("3. Withdraw\n");
-    printf("4. Exit\n");
+    }printf("Maximum attempts exceeded");
+}
+//displaymenu function
+void displaymenu(){
+printf("\n ENTER YOUR CHOICE OF SERVICE\n");
+ printf("1. CheckBalance\n");
+ printf("2. Deposit\n");
+ printf("3. Withdraw\n");
+ printf("4. Exit\n");
     }
     //checkbalance function
-    void Checkbalance(double balance){
-    printf("Account Balance is: Ksh%.2f\n", balance);
+    void checkbalance(double balance){
+    printf("Account balance is:Ksh %.2f\n", balance);
     }
     //deposit function
     void depositmoney(double *balance){
     double amount;
-    printf("\nEnter amount to deposit:Ksh");
+    printf("Enter Amount to deposit:");
     scanf("%lf", &amount);
-    if(amount > 0){
-       *balance = *balance + amount;
-        printf("\nDeposit done\n");
-        printf("New balance is: ksh %.2f\n", *balance);
-       }else{
-       printf("\nInvalid deposit amount\n");
-       }
-    }
-    //withdrawal function
+    if(amount>0){
+        *balance=*balance+amount;
+        printf("New account Balance:Ksh %.2f", *balance);
+    }else{
+    printf("\n invalid deposit amount\n");
+    }}
+    //withdraw dunction
     void withdrawmoney(double *balance){
     double amount;
-    printf("\nEnter amount to withdraw");
+    printf("Enter amount to withdraw:");
     scanf("%lf", &amount);
-    if(amount<=0){
-        printf("Invalid withdrawal amount\n");
-    }else if
-    (amount> *balance){printf("Insufficient balance\n");
-    }else{
-    *balance = *balance-amount;
-    printf("Amount withdrawn: Ksh%.2lf\n", amount);
-    printf("new Balance: Ksh%.2lf\n", *balance);}
+          if(amount<=0){
+            printf("Invalid withdrawal amount\n");
+            }else if(amount> *balance){
+                printf("insufficient balance");
+            }else {
+            *balance = *balance-amount;
+            printf("Amount withdrawn: Ksh %.2f\n",amount);
+            printf("New Account Balance: Ksh %.2f\n", *balance);}
     }
     int main(){
-    //function declaration
-     char username[50];
-     char pin[5];
-     double balance = 7000.00;
-     int choice;
-    printf("Enter username");
-    scanf("%49s", username);
-    printf("Enter pin");
-    scanf("%4s",pin);
+        char username[50];
+        char pin[5];
+        double balance=70000.00;
+    int choice;
     //function call
-    //call login
-    int result = login(username,pin);
-    if(result==1){
-            do{
-        //display menu call
+    int result=login(username,pin);
+    if(result=1){
+        do{
             displaymenu();
             scanf("%d", &choice);
-    //user's choice
-    if (choice == 1){
-        Checkbalance(balance);
-    }
-    else if(choice== 2){
-            depositmoney(&balance);
-    }
-    else if(choice == 3){
-        withdrawmoney(&balance);
-    }else if(choice == 4){
-    printf("Thankyou\n");
-    }else{
-    printf("invalid choice\n");}
-    } while (choice != 5);}
-    else{
-        printf("invalid username or pin");
+            if(choice==1){
+                checkbalance(balance);}
+                else if(choice==2){
+                    depositmoney(&balance);
+                }else if
+                (choice==3){
+                withdrawmoney(&balance);
+                }else if
+                (choice==4){
+                printf("Thankyou\n");
+                } else {
+                printf("Invalid choice\n");
+                }
+                }while (choice !=5);
+            }
+            return 0;
         }
-        return 0;
-    }
-
 
